@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baruch Spinoza - Filósofo de la Libertad y la Razón</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="grad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></radialGradient></defs><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.25)"/></svg>') repeat;
+                animation: float 20s ease-in-out infinite;
+            }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateX(0px) translateY(0px);
+            }
+
+            50% {
+                transform: translateX(10px) translateY(-10px);
+            }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .hero .dates {
+            font-size: 1.2rem;
+            font-style: italic;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+            .section:nth-child(even) {
+                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            }
+
+            .section h2 {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                text-align: center;
+                color: #34495e;
+                position: relative;
+            }
+
+                .section h2::after {
+                    content: '';
+                    display: block;
+                    width: 100px;
+                    height: 3px;
+                    background: linear-gradient(90deg, #667eea, #764ba2);
+                    margin: 1rem auto;
+                    border-radius: 2px;
+                }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+            margin-top: 3rem;
+        }
+
+        .portrait {
+            text-align: center;
+        }
+
+            .portrait img {
+                width: 100%;
+                max-width: 300px;
+                border-radius: 15px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+
+                .portrait img:hover {
+                    transform: scale(1.05);
+                }
+
+        .bio-text {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+            .quote-box::before {
+                content: '"';
+                font-size: 6rem;
+                position: absolute;
+                top: -1rem;
+                left: 1rem;
+                opacity: 0.3;
+                font-family: serif;
+            }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-source {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-align: right;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(180deg, #667eea, #764ba2);
+                transform: translateX(-50%);
+            }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 50%;
+                padding-right: 2rem;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50%;
+                padding-left: 2rem;
+            }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .work-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .work-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 5px;
+                background: linear-gradient(90deg, #667eea, #764ba2);
+            }
+
+            .work-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            }
+
+        .work-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .work-date {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .work-description {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .links-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ecf0f1;
+        }
+
+        .link-group {
+            margin-bottom: 1rem;
+        }
+
+            .link-group h4 {
+                color: #34495e;
+                margin-bottom: 0.5rem;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .link-group a {
+                color: #667eea;
+                text-decoration: none;
+                margin-right: 1rem;
+                font-size: 0.9rem;
+                transition: color 0.3s ease;
+            }
+
+                .link-group a:hover {
+                    color: #764ba2;
+                    text-decoration: underline;
+                }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .concept-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+            .concept-card:hover {
+                transform: scale(1.02);
+            }
+
+            .concept-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #667eea, #764ba2);
+            }
+
+        .concept-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .reference-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+            .reference-card h4 {
+                color: #34495e;
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+            }
+
+            .reference-card a {
+                color: #667eea;
+                text-decoration: none;
+                display: block;
+                margin-bottom: 0.5rem;
+                transition: color 0.3s ease;
+            }
+
+                .reference-card a:hover {
+                    color: #764ba2;
+                    text-decoration: underline;
+                }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .bio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 40px;
+                margin-right: 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Baruch Spinoza</h1>
+            <p class="subtitle">El Filósofo de la Libertad, la Razón y la Naturaleza</p>
+            <p class="dates">Amsterdam, 1632 - La Haya, 1677</p>
+        </div>
+        <div class="scroll-indicator">
+            <div style="font-size: 2rem;">↓</div>
+            <div>Descubre su legado</div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <h2>Biografía</h2>
+            <div class="bio-grid">
+                <div class="portrait">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'><rect width='300' height='400' fill='%23f8f9fa'/><circle cx='150' cy='120' r='60' fill='%236c757d'/><rect x='75' y='180' width='150' height='180' rx='20' fill='%23495057'/><text x='150' y='320' text-anchor='middle' fill='white' font-size='14'>Retrato de</text><text x='150' y='340' text-anchor='middle' fill='white' font-size='14'>B. Spinoza</text></svg>" alt="Retrato de Baruch Spinoza">
+                </div>
+                <div class="bio-text">
+                    <p>Baruch Spinoza (1632-1677) fue un filósofo neerlandés de origen sefardí portugués, considerado uno de los grandes racionalistas del siglo XVII junto con René Descartes y Gottfried Leibniz. Nacido en Amsterdam en el seno de una familia de comerciantes judíos portugueses que habían huido de la Inquisición, Spinoza recibió una educación tradicional judía en la sinagoga portuguesa de Amsterdam.</p>
+
+                    <p>Su pensamiento revolucionario y sus ideas heterodoxas sobre Dios, la religión y la política le valieron la excomunión (herem) de la comunidad judía de Amsterdam en 1656, cuando tenía apenas 23 años. Esta ruptura marcó profundamente su vida y su filosofía, llevándole a desarrollar un sistema de pensamiento que identificaba a Dios con la Naturaleza y defendía la libertad de pensamiento y expresión.</p>
+
+                    <p>Vivió modestamente como pulidor de lentes ópticas, oficio que había aprendido para mantenerse económicamente independiente. Esta profesión no solo le proporcionó sustento, sino que también influyó en su metafísica, donde la claridad y la precisión óptica se convirtieron en metáforas de la claridad conceptual y el conocimiento verdadero.</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <div class="quote-text">
+                    "La paz no es ausencia de guerra, es una virtud, un estado mental, una disposición a la benevolencia, la confianza, la justicia."
+                </div>
+                <div class="quote-source">— Tratado Político</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Cronología de Vida</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1632</div>
+                        <p>Nace en Amsterdam el 24 de noviembre, hijo de Miguel de Spinoza y Hanna Deborah.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1656</div>
+                        <p>Es excomulgado de la comunidad judía de Amsterdam por sus ideas heterodoxas sobre Dios y la religión.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1660</div>
+                        <p>Escribe el "Tratado breve sobre Dios, el hombre y su felicidad", su primera obra filosófica sistemática.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1663</div>
+                        <p>Publica "Principios de filosofía cartesiana" y se traslada a Voorburg, cerca de La Haya.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1670</div>
+                        <p>Publica anónimamente el "Tratado teológico-político", que causa gran controversia.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">1677</div>
+                        <p>Muere el 21 de febrero en La Haya. Póstumamente se publica la "Ética demostrada según el orden geométrico".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Obras Principales</h2>
+            <div class="works-grid">
+                <div class="work-card">
+                    <div class="work-title">Ética demostrada según el orden geométrico</div>
+                    <div class="work-date">1677 (póstuma)</div>
+                    <div class="work-description">
+                        Su obra maestra, donde desarrolla su sistema filosófico completo utilizando el método geométrico. Aborda temas como la naturaleza de Dios, la mente humana, las emociones y la libertad.
+                    </div>
+                    <div class="quote-box">
+                        <div class="quote-text">"Deus sive Natura" (Dios o la Naturaleza)</div>
+                        <div class="quote-source">— Ética, Parte IV</div>
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Versiones gratuitas:</h4>
+                            <a href="https://www.gutenberg.org/ebooks/3800" target="_blank">Project Gutenberg (EN)</a>
+                            <a href="https://archive.org/details/eticademostradas00spin" target="_blank">Archive.org</a>
+                        </div>
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+etica+demostrada" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Tratado teológico-político</div>
+                    <div class="work-date">1670</div>
+                    <div class="work-description">
+                        Una obra revolucionaria sobre la relación entre religión y política, donde defiende la libertad de pensamiento y critica el poder de las instituciones religiosas.
+                    </div>
+                    <div class="quote-box">
+                        <div class="quote-text">"El fin del Estado es realmente la libertad"</div>
+                        <div class="quote-source">— Tratado teológico-político, Cap. XX</div>
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Versiones gratuitas:</h4>
+                            <a href="https://archive.org/details/tratadoteologic00spin" target="_blank">Archive.org</a>
+                        </div>
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+tratado+teologico+politico" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Tratado de la reforma del entendimiento</div>
+                    <div class="work-date">1677 (póstuma, incompleta)</div>
+                    <div class="work-description">
+                        Una obra sobre epistemología donde Spinoza examina los diferentes tipos de conocimiento y propone un método para alcanzar la verdad.
+                    </div>
+                    <div class="quote-box">
+                        <div class="quote-text">"La verdad es norma de sí misma y de lo falso"</div>
+                        <div class="quote-source">— Tratado de la reforma del entendimiento</div>
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+tratado+reforma+entendimiento" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Tratado político</div>
+                    <div class="work-date">1677 (póstuma, incompleta)</div>
+                    <div class="work-description">
+                        Su última obra, dedicada a la filosofía política, donde analiza diferentes formas de gobierno y propone principios para un Estado justo.
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+tratado+politico" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Principios de filosofía cartesiana</div>
+                    <div class="work-date">1663</div>
+                    <div class="work-description">
+                        La única obra publicada en vida bajo su nombre, donde expone y critica la filosofía de Descartes.
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+principios+filosofia+cartesiana" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="work-card">
+                    <div class="work-title">Correspondencia</div>
+                    <div class="work-date">1661-1677</div>
+                    <div class="work-description">
+                        Sus cartas con importantes intelectuales de la época, incluyendo Leibniz, Oldenburg y otros, que revelan el desarrollo de su pensamiento.
+                    </div>
+                    <div class="links-section">
+                        <div class="link-group">
+                            <h4>Comprar (Español):</h4>
+                            <a href="https://www.amazon.es/s?k=spinoza+correspondencia+cartas" target="_blank">Amazon España</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Pensamiento Filosófico</h2>
+            <div class="philosophy-grid">
+                <div class="concept-card">
+                    <div class="concept-title">Monismo Sustancialista</div>
+                    <p>Spinoza sostiene que existe una sola sustancia infinita, que identifica con Dios y la Naturaleza. Todo lo que existe son modos o modificaciones de esta única sustancia.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"Además de Dios, no puede darse ni concebirse sustancia alguna"</div>
+                        <div class="quote-source">— Ética, Proposición XIV</div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Determinismo</div>
+                    <p>Defiende que todo en la naturaleza está determinado por las leyes naturales. No existe el libre albedrío en el sentido tradicional, pero sí la libertad como comprensión de la necesidad.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"Los hombres se creen libres porque son conscientes de sus voliciones y de su apetito, pero ignoran las causas que los disponen a querer y a apetecer"</div>
+                        <div class="quote-source">— Ética, Apéndice Parte I</div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Crítica de las Pasiones</div>
+                    <p>Analiza las emociones humanas como fuerzas naturales que pueden ser comprendidas y reguladas mediante la razón. La sabiduría consiste en el dominio racional de las pasiones.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"Una emoción no puede ser reprimida ni anulada sino por una emoción contraria y más fuerte"</div>
+                        <div class="quote-source">— Ética, Proposición VII, Parte IV</div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Conocimiento Intuitivo</div>
+                    <p>Distingue tres tipos de conocimiento: imaginación, razón e intuición. El conocimiento intuitivo es el más elevado, permitiendo la comprensión directa de las esencias eternas.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"Cuanto más entendemos las cosas particulares, tanto más entendemos a Dios"</div>
+                        <div class="quote-source">— Ética, Proposición XXV, Parte V</div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Filosofía Política</div>
+                    <p>Propone un estado democrático basado en la razón, donde la libertad de pensamiento y expresión sean fundamentales. El poder del Estado deriva del poder colectivo de los ciudadanos.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"En un Estado libre está permitido a cada uno pensar lo que quiera y decir lo que piense"</div>
+                        <div class="quote-source">— Tratado teológico-político</div>
+                    </div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Crítica Bíblica</div>
+                    <p>Pionero en el análisis histórico-crítico de la Biblia, argumentando que debe ser interpretada según criterios históricos y filológicos, no como verdad literal revelada.</p>
+                    <div class="quote-box">
+                        <div class="quote-text">"La Escritura no enseña filosofía, sino solamente obediencia"</div>
+                        <div class="quote-source">— Tratado teológico-político</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Contexto Histórico y Filosófico</h2>
+            <div class="bio-text">
+                <h3 style="color: #34495e; margin-bottom: 1rem;">El Siglo XVII: La Revolución Científica</h3>
+                <p>Spinoza vivió durante el Siglo de Oro holandés, una época de extraordinario florecimiento cultural, científico y económico. Los Países Bajos se habían convertido en el centro del comercio mundial y en un refugio para pensadores perseguidos. Este ambiente de tolerancia relativa y prosperidad permitió el desarrollo de ideas innovadoras.</p>
+
+                <p>La Revolución Científica estaba en pleno apogeo con figuras como Galileo, Kepler, y Newton transformando nuestra comprensión del universo. Spinoza, formado en esta tradición, aplicó el método científico a la filosofía, buscando leyes universales que gobernaran tanto la naturaleza física como la humana.</p>
+
+                <h3 style="color: #34495e; margin-bottom: 1rem; margin-top: 2rem;">La Crisis de la Escolástica</h3>
+                <p>El sistema filosófico medieval, basado en Aristóteles y Tomás de Aquino, estaba siendo cuestionado por nuevas corrientes de pensamiento. Spinoza participó activamente en esta transformación, proponiendo un sistema que prescindía de la separación tradicional entre lo natural y lo sobrenatural.</p>
+            </div>
+
+            <div class="quote-box">
+                <div class="quote-text">
+                    "No hay nada en la naturaleza que sea contingente, sino que todo está determinado por la necesidad de la naturaleza divina a existir y operar de cierta manera."
+                </div>
+                <div class="quote-source">— Ética, Proposición XXIX, Parte I</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Influencias Recibidas</h2>
+            <div class="philosophy-grid">
+                <div class="concept-card">
+                    <div class="concept-title">René Descartes (1596-1650)</div>
+                    <p>Aunque criticó aspectos fundamentales del cartesianismo, Spinoza adoptó su método geométrico y su enfoque racionalista. Sin embargo, rechazó el dualismo mente-cuerpo cartesiano.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Tradición Judía</div>
+                    <p>Su formación en el Talmud y la filosofía judía medieval, especialmente Maimónides y Gersónides, influyó en su comprensión de Dios y la naturaleza, aunque posteriormente se alejó de la ortodoxia.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Giordano Bruno (1548-1600)</div>
+                    <p>La concepción panteísta de Bruno, que identificaba a Dios con el universo infinito, resonó profundamente en el pensamiento spinoziano, aunque Spinoza desarrolló esta idea de manera más sistemática.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Estoicismo Clásico</div>
+                    <p>Los estoicos, especialmente Séneca y Epicteto, influyeron en su ética y su concepción del sabio como aquel que acepta el orden natural con serenidad.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Thomas Hobbes (1588-1679)</div>
+                    <p>Compartió con Hobbes el enfoque naturalista de la política y la psicología humana, aunque discrepó en sus conclusiones sobre el estado natural y el contrato social.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Uriel da Costa (1585-1640)</div>
+                    <p>Este filósofo judío, también excomulgado de la comunidad de Amsterdam, fue precursor en la crítica a la religión organizada y posiblemente influyó en las ideas heterodoxas de Spinoza.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Influencia Ejercida</h2>
+            <div class="bio-text">
+                <h3 style="color: #34495e; margin-bottom: 1rem;">Siglo XVIII: La Ilustración</h3>
+                <p>Los ilustrados franceses, especialmente Diderot y d'Holbach, adoptaron muchas ideas spinozistas sobre la naturaleza, la religión y la política. Voltaire, aunque crítico, reconoció la importancia de su pensamiento para la tolerancia religiosa.</p>
+
+                <h3 style="color: #34495e; margin-bottom: 1rem; margin-top: 2rem;">Idealismo Alemán</h3>
+                <p>Kant, Fichte, Schelling y especialmente Hegel fueron profundamente influidos por Spinoza. Hegel lo consideró el precursor del idealismo absoluto y adoptó su método dialéctico.</p>
+
+                <h3 style="color: #34495e; margin-bottom: 1rem; margin-top: 2rem;">Siglo XIX: Romanticismo y Crítica</h3>
+                <p>Los románticos alemanes como Goethe, Schelling y Schleiermacher encontraron en Spinoza un modelo de unidad entre pensamiento y naturaleza. Nietzsche lo admiró como precursor de su crítica a la moral tradicional.</p>
+
+                <h3 style="color: #34495e; margin-bottom: 1rem; margin-top: 2rem;">Siglo XX: Filosofía Contemporánea</h3>
+                <p>Filósofos como Deleuze, Negri, y los teóricos de la complejidad han renovado el interés en Spinoza, especialmente en su ontología de la inmanencia y su filosofía política.</p>
+            </div>
+
+            <div class="philosophy-grid" style="margin-top: 2rem;">
+                <div class="concept-card">
+                    <div class="concept-title">Gilles Deleuze (1925-1995)</div>
+                    <p>Desarrolló una ontología basada en Spinoza, enfatizando conceptos como inmanencia, multiplicidad y devenir. Su obra "Spinoza: Filosofía práctica" renovó el interés contemporáneo.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Antonio Negri (1933-)</div>
+                    <p>Ha utilizado la filosofía política spinozista para desarrollar teorías sobre el poder constituyente y la multitud en la era de la globalización.</p>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-title">Crítica Bíblica Moderna</div>
+                    <p>Su método histórico-crítico para interpretar la Biblia anticipó desarrollos de la exégesis bíblica moderna y la teología liberal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2>Referencias y Fuentes</h2>
+            <div class="references-grid">
+                <div class="reference-card">
+                    <h4>Textos Primarios</h4>
+                    <a href="https://www.gutenberg.org/ebooks/author/352" target="_blank">Project Gutenberg - Obras de Spinoza</a>
+                    <a href="https://archive.org/search.php?query=spinoza" target="_blank">Internet Archive - Colección Spinoza</a>
+                    <a href="https://www.amazon.es/s?k=spinoza+obras+completas" target="_blank">Amazon España - Obras Completas</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Wikipedia</h4>
+                    <a href="https://es.wikipedia.org/wiki/Baruch_Spinoza" target="_blank">Baruch Spinoza (Español)</a>
+                    <a href="https://en.wikipedia.org/wiki/Baruch_Spinoza" target="_blank">Baruch Spinoza (English)</a>
+                    <a href="https://es.wikipedia.org/wiki/Filosofía_de_Spinoza" target="_blank">Filosofía de Spinoza</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Academia.edu</h4>
+                    <a href="https://www.academia.edu/search?q=spinoza+etica" target="_blank">Artículos sobre Ética de Spinoza</a>
+                    <a href="https://www.academia.edu/search?q=spinoza+politica" target="_blank">Filosofía Política Spinozista</a>
+                    <a href="https://www.academia.edu/search?q=spinoza+teologia" target="_blank">Spinoza y Teología</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Recursos Académicos</h4>
+                    <a href="https://plato.stanford.edu/entries/spinoza/" target="_blank">Stanford Encyclopedia of Philosophy</a>
+                    <a href="https://www.philosophybasics.com/philosophers_spinoza.html" target="_blank">Philosophy Basics - Spinoza</a>
+                    <a href="https://www.iep.utm.edu/spinoza/" target="_blank">Internet Encyclopedia of Philosophy</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Sociedades y Centros de Estudio</h4>
+                    <a href="https://www.spinozasociety.org/" target="_blank">The Spinoza Society</a>
+                    <a href="https://www.spinoza.net/" target="_blank">Spinoza Web</a>
+                    <a href="https://spinozacentre.eu/" target="_blank">Spinoza Centre (Europa)</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Biografías Especializadas</h4>
+                    <a href="https://www.amazon.es/s?k=biografia+spinoza" target="_blank">Biografías en Amazon España</a>
+                    <a href="https://www.goodreads.com/book/show/190737.Spinoza" target="_blank">Goodreads - Libros sobre Spinoza</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Documentales y Multimedia</h4>
+                    <a href="https://www.youtube.com/results?search_query=spinoza+filosofia+documental" target="_blank">YouTube - Documentales Spinoza</a>
+                    <a href="https://www.rtve.es/play/audios/filosofia-aqui-y-ahora/filosofia-aqui-ahora-spinoza/5904208/" target="_blank">RTVE - Filosofía sobre Spinoza</a>
+                </div>
+
+                <div class="reference-card">
+                    <h4>Revistas Especializadas</h4>
+                    <a href="https://www.jstor.org/action/doBasicSearch?Query=spinoza" target="_blank">JSTOR - Artículos académicos</a>
+                    <a href="https://link.springer.com/search?query=spinoza" target="_blank">Springer - Investigación Spinoza</a>
+                </div>
+            </div>
+
+            <div class="bio-text" style="margin-top: 3rem;">
+                <h3 style="color: #34495e; margin-bottom: 1rem;">Bibliografía Recomendada</h3>
+                <p><strong>Biografías esenciales:</strong></p>
+                <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                    <li>Nadler, Steven. "Spinoza: Una vida" (2001)</li>
+                    <li>Damasio, Antonio. "En busca de Spinoza" (2003)</li>
+                    <li>Albiac, Gabriel. "La sinagoga vacía: Un estudio de las fuentes marranas del espinosismo" (1987)</li>
+                </ul>
+
+                <p><strong>Estudios filosóficos fundamentales:</strong></p>
+                <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                    <li>Deleuze, Gilles. "Spinoza: Filosofía práctica" (1981)</li>
+                    <li>Negri, Antonio. "La anomalía salvaje: Ensayo sobre poder y potencia en Spinoza" (1981)</li>
+                    <li>Vidal Peña, Atilano. "El materialismo de Spinoza" (1974)</li>
+                    <li>Moreau, Pierre-François. "Spinoza y el espinosismo" (2007)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 - Página web educativa sobre Baruch Spinoza</p>
+            <p>Compilado con fines académicos y de divulgación filosófica</p>
+            <p style="margin-top: 1rem; font-style: italic;">
+                "La filosofía no debe llorar, ni reír, sino comprender" - Baruch Spinoza
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación suave para el scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Animación para las tarjetas al hacer scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar elementos para animación
+            const animatedElements = document.querySelectorAll('.work-card, .concept-card, .reference-card, .timeline-item');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Efecto parallax suave para el hero
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero && scrolled < window.innerHeight) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
